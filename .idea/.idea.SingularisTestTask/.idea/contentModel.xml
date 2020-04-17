@@ -27,6 +27,18 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="SingularisTestTask.sln" t="IncludeFlat" />
+      <e p="Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Tests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Tests.csproj" t="IncludeRecursive" />
+        <e p="UnitTest1.cs" t="Include" />
+      </e>
       <e p="Watcher" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="DirectoryWatcher.cs" t="Include" />
@@ -42,18 +54,6 @@
         <e p="Program.cs" t="Include" />
         <e p="Watcher.cs" t="Include" />
         <e p="Watcher.csproj" t="IncludeRecursive" />
-      </e>
-      <e p="WatcherTests" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="WatcherTests.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="UnitTest1.cs" t="Include" />
-        <e p="WatcherTests.csproj" t="IncludeRecursive" />
       </e>
     </e>
   </component>

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace WatcherTests
+namespace Tests
 {
     public class Tests
     {
