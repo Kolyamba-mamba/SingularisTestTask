@@ -107,12 +107,12 @@ namespace Tests
             A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
             var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
-            var expectedCalls = new[] { "Read", "Delete" };
+            var expectedCalls = new[] { "Read", "GetShortFilename", "Delete" };
             // Act
             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
             // Assert
             var calls = Fake.GetCalls(_fileManager).ToList();
-            calls.Count.Should().Be(2);
+            calls.Count.Should().Be(expectedCalls.Length);
             calls.Select(call => call.Method.Name).Should().BeEquivalentTo(expectedCalls);
             A.CallTo(() => _fileManager.Delete(filePath)).MustHaveHappened();
         }

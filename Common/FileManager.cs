@@ -17,5 +17,17 @@ namespace Watcher
             var file = new FileInfo(path);
             file.Delete();
         }
+
+        public void Write(string path, byte[] content)
+        {
+            using var file = File.OpenWrite(path);
+            file.Write(content);
+        }
+
+        public string GetShortFilename(string fullPath)
+        {
+            var file = new FileInfo(fullPath);
+            return file.Name;
+        }
     }
 }
