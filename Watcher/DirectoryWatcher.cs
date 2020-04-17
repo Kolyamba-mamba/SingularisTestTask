@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Watcher
@@ -20,6 +20,7 @@ namespace Watcher
                                | NotifyFilters.DirectoryName,
                 Filter = "*.*"
             };
+            _fileSystemWatcher.Created += OnChanged;
         }
         
         public event IDirectoryWatcher.NewFileEventHandler NewFile;
