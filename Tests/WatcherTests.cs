@@ -62,7 +62,7 @@ namespace Tests
             }
 
             // Assert
-            A.CallTo(() => _messageSender.Send(A<string>._)).MustHaveHappened(testFileNames.Length, Times.Exactly);
+            A.CallTo(() => _messageSender.Send(A<byte[]>._)).MustHaveHappened(testFileNames.Length, Times.Exactly);
         }
 
         [Test]
@@ -83,7 +83,8 @@ namespace Tests
             }
 
             // Assert
-            A.CallTo(() => _messageSender.Send(A<string>._)).MustHaveHappened(0, Times.Exactly);
+            A.CallTo(() => _messageSender.Send(A<byte[]>._)).MustHaveHappened(0, Times.Exactly);
+        }
 
         }
     }
