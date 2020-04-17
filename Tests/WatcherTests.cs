@@ -23,13 +23,13 @@ namespace Tests
     public class WatcherShould
     {
         private IDirectoryWatcher _directoryWatcher;
-        private IMessageSender<byte[]> _messageSender;
+        private IMessageSender<BusMessage> _messageSender;
         private IFileManager _fileManager;
         [SetUp]
         public void Setup()
         {
             _directoryWatcher = A.Fake<IDirectoryWatcher>();
-            _messageSender = A.Fake<IMessageSender<byte[]>>();
+            _messageSender = A.Fake<IMessageSender<BusMessage>>();
             _fileManager = A.Fake<IFileManager>();
         }
 
@@ -63,7 +63,7 @@ namespace Tests
             }
 
             // Assert
-            A.CallTo(() => _messageSender.Send(A<byte[]>._)).MustHaveHappened(testFileNames.Length, Times.Exactly);
+            A.CallTo(() => _messageSender.Send(A<BusMessage>._)).MustHaveHappened(testFileNames.Length, Times.Exactly);
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace Tests
             }
 
             // Assert
-            A.CallTo(() => _messageSender.Send(A<byte[]>._)).MustHaveHappened(0, Times.Exactly);
+            A.CallTo(() => _messageSender.Send(A<BusMessage>._)).MustHaveHappened(0, Times.Exactly);
         }
 
         [Test]

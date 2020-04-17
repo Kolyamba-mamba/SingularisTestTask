@@ -15,6 +15,7 @@
     <e p="C:\Users\Nikolay\RiderProjects\SingularisTestTask" t="IncludeFlat">
       <e p="Common" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="BusMessage.cs" t="Include" />
         <e p="Common.csproj" t="IncludeRecursive" />
         <e p="FileManager.cs" t="Include" />
         <e p="IFileManager.cs" t="Include" />
