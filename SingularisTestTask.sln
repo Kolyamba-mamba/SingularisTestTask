@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watcher", "Watcher\Watcher.csproj", "{130334A0-2539-4AC1-9E5C-E471F5ED5658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Converter.csproj", "{D035BA40-4E21-40B8-89B1-087F455C9712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatcherTests", "WatcherTests\WatcherTests.csproj", "{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{130334A0-2539-4AC1-9E5C-E471F5ED5658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130334A0-2539-4AC1-9E5C-E471F5ED5658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130334A0-2539-4AC1-9E5C-E471F5ED5658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130334A0-2539-4AC1-9E5C-E471F5ED5658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D035BA40-4E21-40B8-89B1-087F455C9712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D035BA40-4E21-40B8-89B1-087F455C9712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D035BA40-4E21-40B8-89B1-087F455C9712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D035BA40-4E21-40B8-89B1-087F455C9712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
