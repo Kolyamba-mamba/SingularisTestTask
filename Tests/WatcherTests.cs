@@ -22,12 +22,14 @@ namespace Tests
     public class WatcherShould
     {
         private IDirectoryWatcher _directoryWatcher;
-        private IMessageSender _messageSender;
+        private IMessageSender<byte[]> _messageSender;
+        private IFileManager _fileManager;
         [SetUp]
         public void Setup()
         {
             _directoryWatcher = A.Fake<IDirectoryWatcher>();
-            _messageSender = A.Fake<IMessageSender>();
+            _messageSender = A.Fake<IMessageSender<byte[]>>();
+            _fileManager = A.Fake<IFileManager>();
         }
 
         [Test]

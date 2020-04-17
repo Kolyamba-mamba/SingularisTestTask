@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Watcher
 {
     public class Watcher
     {
-        private readonly IMessageSender _sender;
+        private readonly IMessageSender<byte[]> _sender;
         private readonly IDirectoryWatcher _directoryWatcher;
         private readonly Action _waitForQuit;
 
-        public Watcher(IMessageSender sender, Action waitForQuit, IDirectoryWatcher directoryWatcher)
+        public Watcher(IMessageSender<byte[]> sender, Action waitForQuit, IDirectoryWatcher directoryWatcher, IFileManager fileManager)
         {
             _sender = sender ?? throw new ArgumentNullException(nameof(sender));
             _waitForQuit = waitForQuit ?? throw new ArgumentNullException(nameof(waitForQuit));

@@ -1,7 +1,7 @@
 ﻿namespace Watcher
 {
-    public interface IMessageSender
+    public interface IMessageSender<TMessage> where TMessage : class
     {
-        void Send(string filename);
+        void Send(TMessage value);
     }
 }
