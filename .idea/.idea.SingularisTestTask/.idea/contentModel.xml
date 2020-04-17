@@ -44,6 +44,7 @@
         <e p="DirectoryWatcher.cs" t="Include" />
         <e p="IDirectoryWatcher.cs" t="Include" />
         <e p="IMessageSender.cs" t="Include" />
+        <e p="MessageSender.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
