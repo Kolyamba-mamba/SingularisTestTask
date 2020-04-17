@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Watcher
@@ -7,8 +7,6 @@ namespace Watcher
     {
         private readonly string _directoryToWatch;
         private readonly FileSystemWatcher _fileSystemWatcher;
-        
-        private IDirectoryWatcher.NewFileDelegate _newFileDelegates;
         
         public DirectoryWatcher(string directoryToWatch)
         {
