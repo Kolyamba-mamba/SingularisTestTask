@@ -38,7 +38,7 @@ namespace Tests
             // Arrange 
             var testDirectoryWatcher = new TestDirectoryWatcher();
             // Act
-            new Watcher.Watcher(_messageSender, () => { }, testDirectoryWatcher);
+            new Watcher.Watcher(_messageSender, () => { }, testDirectoryWatcher, _fileManager);
             
             // Assert
             testDirectoryWatcher.SubscriberCount.Should().Be(1);
@@ -53,7 +53,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.bmp",
                 @"C:\Users\Nikolay\Downloads\fourth.jpg"
             };
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher);
+            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
             
             // Act
             foreach (var fileName in testFileNames)
@@ -74,7 +74,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.html",
                 @"C:\Users\Nikolay\Downloads\fourth.exe"
             };
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher);
+            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
             
             // Act
             foreach (var fileName in testFileNames)
