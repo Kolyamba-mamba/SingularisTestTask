@@ -13,9 +13,23 @@
     <e p="C:\Users\Nikolay\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Nikolay\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_SingularisTestTask.775301918.00" t="ExcludeRecursive" />
     <e p="C:\Users\Nikolay\RiderProjects\SingularisTestTask" t="IncludeFlat">
+      <e p="Common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common.csproj" t="IncludeRecursive" />
+        <e p="FileManager.cs" t="Include" />
+        <e p="IFileManager.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Common.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="Converter" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Converter.csproj" t="IncludeRecursive" />
+        <e p="IMessageReceiver.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -41,7 +55,6 @@
       </e>
       <e p="Watcher" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="ConsoleMessageSender.cs" t="Include" />
         <e p="DirectoryWatcher.cs" t="Include" />
         <e p="IDirectoryWatcher.cs" t="Include" />
         <e p="IMessageSender.cs" t="Include" />
