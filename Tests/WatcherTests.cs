@@ -1,3 +1,4 @@
+using System.Linq;
 using FakeItEasy;
 using NUnit.Framework;
 using Watcher;
@@ -86,6 +87,34 @@ namespace Tests
             A.CallTo(() => _messageSender.Send(A<byte[]>._)).MustHaveHappened(0, Times.Exactly);
         }
 
+        [Test]
+        public void ReadFile_WhenCreated()
+        {
+            // Arrange
+            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
+            const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
+            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            // Act
+            _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
+            // Assert
+            A.CallTo(() => _fileManager.Read(filePath)).MustHaveHappened();
+        }
+
+        [Test]
+        public void DeleteFile_AfterRead()
+        {
+            // Arrange
+            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
+            const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
+            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            var expectedCalls = new[] { "Read", "Delete" };
+            // Act
+            _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
+            // Assert
+            var calls = Fake.GetCalls(_fileManager).ToList();
+            calls.Count.Should().Be(2);
+            calls.Select(call => call.Method.Name).Should().BeEquivalentTo(expectedCalls);
+            A.CallTo(() => _fileManager.Delete(filePath)).MustHaveHappened();
         }
     }
 }
