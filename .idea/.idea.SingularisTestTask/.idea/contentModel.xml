@@ -37,7 +37,7 @@
           </e>
         </e>
         <e p="Tests.csproj" t="IncludeRecursive" />
-        <e p="UnitTest1.cs" t="Include" />
+        <e p="WatcherTests.cs" t="Include" />
       </e>
       <e p="Watcher" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />

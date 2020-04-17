@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Watcher
@@ -26,7 +26,9 @@ namespace Watcher
 
         private void OnNewFile(string fullPath)
         {
-            if (!fullPath.EndsWith(".jpg") && !fullPath.EndsWith(".png") && !fullPath.EndsWith(".bmp")) return;
+            if (!fullPath.EndsWith(".jpeg") && !fullPath.EndsWith(".png") 
+                                           && !fullPath.EndsWith(".bmp") 
+                                           && !fullPath.EndsWith(".jpg")) return;
             _sender.Send(fullPath);
         }
     }
