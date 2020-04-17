@@ -24,8 +24,6 @@ namespace Watcher
             _waitForQuit();
         }
 
-        private void OnChanged(object source, FileSystemEventArgs e) => _sender.Send(e.FullPath);
-
         private void OnNewFile(string fullPath)
         {
             if (!fullPath.EndsWith(".jpg") && !fullPath.EndsWith(".png") && !fullPath.EndsWith(".bmp")) return;
