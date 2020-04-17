@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Watcher
@@ -24,10 +24,8 @@ namespace Watcher
             };
         }
         
+        public event IDirectoryWatcher.NewFileEventHandler NewFile;
 
-        public void AddNewFileHandler(IDirectoryWatcher.NewFileDelegate newFileDelegate)
-            => _newFileDelegates += newFileDelegate;
-        
         public void BeginWatch() 
             => _fileSystemWatcher.EnableRaisingEvents = true;
 
@@ -35,6 +33,6 @@ namespace Watcher
             => _fileSystemWatcher.Dispose();
 
         private void OnChanged(object source, FileSystemEventArgs e) 
-            => _newFileDelegates(e.FullPath);
+            => NewFile?.Invoke(e.FullPath);
     }
 }

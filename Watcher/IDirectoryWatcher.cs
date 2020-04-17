@@ -2,8 +2,10 @@
 {
     public interface IDirectoryWatcher
     {
-        public delegate void NewFileDelegate(string fullPath);
-        void AddNewFileHandler(NewFileDelegate newFileDelegate);
+        public delegate void NewFileEventHandler(string fullPath);
+        
+        event NewFileEventHandler NewFile;
+       
         void BeginWatch();
     }
 }

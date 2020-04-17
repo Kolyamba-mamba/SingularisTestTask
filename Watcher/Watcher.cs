@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Watcher
@@ -14,7 +14,7 @@ namespace Watcher
             _sender = sender ?? throw new ArgumentNullException(nameof(sender));
             _waitForQuit = waitForQuit ?? throw new ArgumentNullException(nameof(waitForQuit));
             _directoryWatcher = directoryWatcher ?? throw new ArgumentNullException(nameof(directoryWatcher));
-            _directoryWatcher.AddNewFileHandler(OnNewFile);
+            _directoryWatcher.NewFile += OnNewFile;
         }
 
         public void BeginWatch()
