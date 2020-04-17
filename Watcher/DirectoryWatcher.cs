@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace Watcher
@@ -11,9 +11,12 @@ namespace Watcher
         public DirectoryWatcher(string directoryToWatch)
         {
             _directoryToWatch = directoryToWatch ?? throw new ArgumentNullException(nameof(directoryToWatch));
+            var dirInfo = new DirectoryInfo(_directoryToWatch);
+            if (!dirInfo.Exists)
+                dirInfo.Create();
             _fileSystemWatcher = new FileSystemWatcher
             {
-                Path = directoryToWatch,
+                Path = dirInfo.FullName,
                 NotifyFilter = NotifyFilters.LastAccess
                                | NotifyFilters.LastWrite
                                | NotifyFilters.FileName
