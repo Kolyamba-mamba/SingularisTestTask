@@ -1,10 +1,12 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watcher", "Watcher\Watcher.csproj", "{130334A0-2539-4AC1-9E5C-E471F5ED5658}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Converter.csproj", "{D035BA40-4E21-40B8-89B1-087F455C9712}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F9A5AF2B-FC24-4988-898E-4C3EAA372C35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{C0AA44AB-9BE4-45C5-B48C-8C30F7F2EE16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
