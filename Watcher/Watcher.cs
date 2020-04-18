@@ -34,6 +34,8 @@ namespace Watcher
                                            && !fullPath.EndsWith(".jpg")) return;
             
             var content = _fileManager.Read(fullPath);
+            if (content == null || content.Length == 0)
+                return;
             var fileName = _fileManager.GetShortFilename(fullPath);
             
             _sender.Send(new BusMessage{
