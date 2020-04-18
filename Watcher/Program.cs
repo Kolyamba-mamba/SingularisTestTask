@@ -1,10 +1,11 @@
 ﻿using System;
+using Common;
 
 namespace Watcher
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const string incomingString = "incoming";
             using var directoryWatcher = new DirectoryWatcher(incomingString); 
