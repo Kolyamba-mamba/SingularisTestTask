@@ -22,7 +22,8 @@ namespace Converter
                 {
                     Opacity = (int) settings?.settings.Opacity, 
                     Position = (WatermarkPosition) settings?.settings.Position, 
-                    WatermarkRelativeSize = (int) settings?.settings.WatermarkRelativeSize
+                    WatermarkRelativeSize = (int) settings?.settings.WatermarkRelativeSize,
+                    ShouldResizeWatermark = (bool) settings?.settings.ShouldResizeWatermark
                 });
             var converter = new Converter(messageReceiver, imageConverter, fileManager, directoryManager);
             Run();
@@ -33,7 +34,7 @@ namespace Converter
             const string exitMessage = "quit";
             while (true)
             {
-                Console.WriteLine($"Press '{exitMessage}' to quit the sample.");
+                Console.WriteLine($"Press '{exitMessage}' to quit the app.");
                 if (Console.ReadLine() == exitMessage)
                     break;
             }
@@ -50,7 +51,8 @@ namespace Converter
             {
                 Opacity = result.Opacity,
                 WatermarkRelativeSize = result.WatermarkRelativeSize,
-                Position = result.WatermarkPosition
+                Position = result.WatermarkPosition,
+                ShouldResizeWatermark = result.ShouldResizeWatermark
             });
         }
     }

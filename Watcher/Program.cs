@@ -19,7 +19,7 @@ namespace Watcher
             const string exitMessage = "quit";
             while (true)
             {
-                Console.WriteLine($"Press '{exitMessage}' to quit the sample.");
+                Console.WriteLine($"Press '{exitMessage}' to quit the app.");
                 if (Console.ReadLine() == exitMessage)
                     break;
             }
