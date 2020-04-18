@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Converter\Converter.csproj" />
       <ProjectReference Include="..\Watcher\Watcher.csproj" />
     </ItemGroup>
 
