@@ -1,6 +1,6 @@
-﻿using System.IO;
+using System.IO;
 
-namespace Watcher
+namespace Common
 {
     public class FileManager : IFileManager
     {

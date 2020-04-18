@@ -1,4 +1,4 @@
-﻿namespace Watcher
+﻿namespace Common
 {
     public class BusMessage
     {

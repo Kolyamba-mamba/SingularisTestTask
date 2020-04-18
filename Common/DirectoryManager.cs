@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Watcher
+namespace Common
 {
     public class DirectoryManager: IDirectoryManager
     {

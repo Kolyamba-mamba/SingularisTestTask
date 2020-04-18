@@ -1,4 +1,5 @@
 using System.Linq;
+using Common;
 using FakeItEasy;
 using NUnit.Framework;
 using Watcher;
