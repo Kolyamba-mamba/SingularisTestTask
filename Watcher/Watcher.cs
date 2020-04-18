@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Common;
 
@@ -29,9 +29,8 @@ namespace Watcher
 
         private void OnNewFile(string fullPath)
         {
-            if (!fullPath.EndsWith(".jpeg") && !fullPath.EndsWith(".png") 
-                                           && !fullPath.EndsWith(".bmp") 
-                                           && !fullPath.EndsWith(".jpg")) return;
+            if (!IsAllowed(fullPath)) 
+                return;
             
             var content = _fileManager.Read(fullPath);
             if (content == null || content.Length == 0)
@@ -43,6 +42,12 @@ namespace Watcher
                 FileName = fileName
             });
             _fileManager.Delete(fullPath);
+        }
+
+        private static bool IsAllowed(string fullPath)
+        {
+            var extensions = new string[] {".jpeg", ".png", ".bmp", ".jpg"};
+            return extensions.Any(fullPath.EndsWith);
         }
     }
     
