@@ -8,23 +8,15 @@ namespace Watcher
     {
         private readonly IMessageSender<BusMessage> _sender;
         private readonly IDirectoryWatcher _directoryWatcher;
-        private readonly Action _waitForQuit;
         private readonly IFileManager _fileManager;
 
-        public Watcher(IMessageSender<BusMessage> sender, Action waitForQuit, IDirectoryWatcher directoryWatcher, IFileManager fileManager)
+        public Watcher(IMessageSender<BusMessage> sender, IDirectoryWatcher directoryWatcher, IFileManager fileManager)
         {
             _sender = sender ?? throw new ArgumentNullException(nameof(sender));
-            _waitForQuit = waitForQuit ?? throw new ArgumentNullException(nameof(waitForQuit));
             _directoryWatcher = directoryWatcher ?? throw new ArgumentNullException(nameof(directoryWatcher));
             _fileManager = fileManager ?? throw new ArgumentNullException(nameof(fileManager));
             _directoryWatcher.NewFile += OnNewFile;
-        }
-
-        public void BeginWatch()
-        {
             _directoryWatcher.BeginWatch();
-
-            _waitForQuit();
         }
 
         private void OnNewFile(string fullPath)

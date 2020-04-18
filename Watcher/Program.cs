@@ -10,11 +10,11 @@ namespace Watcher
             const string incomingString = "incoming";
             using var directoryWatcher = new DirectoryWatcher(incomingString); 
             using var messageSender = new MessageSender<BusMessage>();
-            var watcher = new Watcher(messageSender, Stop, directoryWatcher, new FileManager());
-            watcher.BeginWatch();
+            var watcher = new Watcher(messageSender, directoryWatcher, new FileManager());
+            Run();
         }
 
-        private static void Stop()
+        private static void Run()
         {
             const string exitMessage = "quit";
             while (true)

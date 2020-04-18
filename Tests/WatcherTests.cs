@@ -40,7 +40,7 @@ namespace Tests
             // Arrange 
             var testDirectoryWatcher = new TestDirectoryWatcher();
             // Act
-            new Watcher.Watcher(_messageSender, () => { }, testDirectoryWatcher, _fileManager);
+            new Watcher.Watcher(_messageSender, testDirectoryWatcher, _fileManager);
             
             // Assert
             testDirectoryWatcher.SubscriberCount.Should().Be(1);
@@ -55,7 +55,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.bmp",
                 @"C:\Users\Nikolay\Downloads\fourth.jpg"
             };
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
             
             // Act
             foreach (var fileName in testFileNames)
@@ -76,7 +76,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.html",
                 @"C:\Users\Nikolay\Downloads\fourth.exe"
             };
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
             
             // Act
             foreach (var fileName in testFileNames)
@@ -94,7 +94,7 @@ namespace Tests
             // Arrange
             A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
             // Act
             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
             // Assert
@@ -107,7 +107,7 @@ namespace Tests
             // Arrange
             A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
-            var watcher = new Watcher.Watcher(_messageSender, () => { }, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
             var expectedCalls = new[] { "Read", "GetShortFilename", "Delete" };
             // Act
             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
