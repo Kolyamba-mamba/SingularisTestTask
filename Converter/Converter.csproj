@@ -8,6 +8,8 @@
     <ItemGroup>
       <PackageReference Include="EasyNetQ" Version="3.7.1" />
       <PackageReference Include="ImageProcessor" Version="2.8.0" />
+      <PackageReference Include="MatthiWare.CommandLineParser" Version="0.3.0" />
+      <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
     </ItemGroup>
 
     <ItemGroup>
