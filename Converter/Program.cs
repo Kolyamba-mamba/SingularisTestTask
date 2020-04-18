@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using Common;
 using MatthiWare.CommandLine;
