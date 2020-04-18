@@ -23,5 +23,10 @@ namespace Converter
         [Description("Путь к водяному знаку")]
         [DefaultValue("logo.png")]
         public string WatermarkPath { get; set; } = "logo.png";
+
+        [Name("r", "resize")]
+        [Description("Нужно ли менять размер водяного знака.")]
+        [DefaultValue(true)]
+        public bool ShouldResizeWatermark { get; set; } = true;
     }
 }

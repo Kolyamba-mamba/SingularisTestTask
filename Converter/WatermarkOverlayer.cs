@@ -20,6 +20,7 @@ namespace Converter
         public int Opacity { get; set; }
         public int WatermarkRelativeSize { get; set; }
         public WatermarkPosition Position { get; set; }
+        public bool ShouldResizeWatermark { get; set; }
     }
     
     public class WatermarkOverlayer : IImageConverter
@@ -37,7 +38,7 @@ namespace Converter
         {
             using var inputImageStream = new MemoryStream(imageBytes);
             var inputImage = Image.FromStream(inputImageStream);
-            var resizedLogo = _logo.Resize(GetNewWatermarkSize(inputImage.Size));
+            var resizedLogo = _watermarkSettings.ShouldResizeWatermark ? _logo.Resize(GetNewWatermarkSize(inputImage.Size)) : _logo;
             var logoPosition = _watermarkSettings.Position.ToActualPosition(inputImage.Size, resizedLogo.Size);
             var imageLayer = new ImageLayer{
                 Image = resizedLogo, 
