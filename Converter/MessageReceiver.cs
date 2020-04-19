@@ -6,9 +6,9 @@ namespace Converter
     public class MessageReceiver<TMessage>:  IDisposable, IMessageReceiver<TMessage> where TMessage : class
     {
         private readonly IBus _bus;
-        public MessageReceiver()
+        public MessageReceiver(string hostName)
         {
-            _bus = RabbitHutch.CreateBus("host=localhost");
+            _bus = RabbitHutch.CreateBus("host =" + hostName);
             _bus.Subscribe<TMessage>("id", OnNewMessage);
         }
 
