@@ -7,8 +7,8 @@ namespace Watcher
     {
         private readonly IBus _bus;
 
-        public MessageSender()
-            => _bus = RabbitHutch.CreateBus("host=localhost");
+        public MessageSender(string hostName)
+            => _bus = RabbitHutch.CreateBus("host =" + hostName);
 
         public void Send(TMessage value) 
             => _bus.Publish<TMessage>(value);
