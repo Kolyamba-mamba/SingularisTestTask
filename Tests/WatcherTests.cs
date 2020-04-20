@@ -108,7 +108,7 @@ namespace Tests
         public void DeleteFile_AfterRead()
         {
             // Arrange
-            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
+            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[1]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
             var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
             var expectedCalls = new[] { "Read", "GetShortFilename", "Delete" };
