@@ -50,6 +50,15 @@ namespace Tests
         }
 
         [Test]
+        public void BeginWatchDirectory_WhenCreated()
+        {
+            // Act
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
+            // Assert
+            A.CallTo(() => _directoryWatcher.BeginWatch()).MustHaveHappened();
+        }
+
+        [Test]
         public void SendFiles_WhenAllowed()
         {
             // Arrange 
