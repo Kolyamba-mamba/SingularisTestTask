@@ -28,5 +28,15 @@ namespace Converter
         [Description("Нужно ли менять размер водяного знака.")]
         [DefaultValue(true)]
         public bool ShouldResizeWatermark { get; set; } = true;
+        
+        [Name(null, "host")]
+        [Description("Задание имени хоста(Должно совпадать у watcher и converter)")]
+        [DefaultValue("localhost")]
+        public string HostName { get; set; } = "localhost";
+        
+        [Name("f", "folder")]
+        [Description("Место сохранения измененного файла")]
+        [DefaultValue("outcoming")]
+        public string FolderPath { get; set; } = "outcoming";
     }
 }

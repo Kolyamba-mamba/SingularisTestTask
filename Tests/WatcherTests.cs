@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Common;
 using FakeItEasy;
@@ -26,12 +27,14 @@ namespace Tests
         private IDirectoryWatcher _directoryWatcher;
         private IMessageSender<BusMessage> _messageSender;
         private IFileManager _fileManager;
+        private bool _shouldDelete;
         [SetUp]
         public void Setup()
         {
             _directoryWatcher = A.Fake<IDirectoryWatcher>();
             _messageSender = A.Fake<IMessageSender<BusMessage>>();
             _fileManager = A.Fake<IFileManager>();
+            _shouldDelete = true;
         }
 
         [Test]
@@ -40,7 +43,7 @@ namespace Tests
             // Arrange 
             var testDirectoryWatcher = new TestDirectoryWatcher();
             // Act
-            new Watcher.Watcher(_messageSender, testDirectoryWatcher, _fileManager);
+            new Watcher.Watcher(_messageSender, testDirectoryWatcher, _fileManager, _shouldDelete);
             
             // Assert
             testDirectoryWatcher.SubscriberCount.Should().Be(1);
@@ -55,7 +58,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.bmp",
                 @"C:\Users\Nikolay\Downloads\fourth.jpg"
             };
-            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
             
             // Act
             foreach (var fileName in testFileNames)
@@ -76,7 +79,7 @@ namespace Tests
                 @"C:\Users\Nikolay\Downloads\third.html",
                 @"C:\Users\Nikolay\Downloads\fourth.exe"
             };
-            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
             
             // Act
             foreach (var fileName in testFileNames)
@@ -94,7 +97,7 @@ namespace Tests
             // Arrange
             A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
-            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
             // Act
             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
             // Assert
@@ -105,9 +108,9 @@ namespace Tests
         public void DeleteFile_AfterRead()
         {
             // Arrange
-            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[0]);
+            A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[1]);
             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
-            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager);
+            var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, _shouldDelete);
             var expectedCalls = new[] { "Read", "GetShortFilename", "Delete" };
             // Act
             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
@@ -116,6 +119,23 @@ namespace Tests
             calls.Count.Should().Be(expectedCalls.Length);
             calls.Select(call => call.Method.Name).Should().BeEquivalentTo(expectedCalls);
             A.CallTo(() => _fileManager.Delete(filePath)).MustHaveHappened();
+        }
+
+        [Test]
+        public void LeaveFile_AfterRead()
+        {
+            // Arrange
+             A.CallTo(() => _fileManager.Read(A<string>._)).Returns(new byte[1]);
+             const string filePath = @"C:\Users\Nikolay\Downloads\third.bmp";
+             var watcher = new Watcher.Watcher(_messageSender, _directoryWatcher, _fileManager, !_shouldDelete);
+             var expectedCalls = new[] { "Read", "GetShortFilename" };
+             // Act
+             _directoryWatcher.NewFile += Raise.FreeForm.With(filePath);
+             // Assert
+             var calls = Fake.GetCalls(_fileManager).ToList();
+             calls.Count.Should().Be(expectedCalls.Length);
+             calls.Select(call => call.Method.Name).Should().BeEquivalentTo(expectedCalls);
+             A.CallTo(() => _fileManager.Delete(filePath)).MustNotHaveHappened();
         }
     }
 }
