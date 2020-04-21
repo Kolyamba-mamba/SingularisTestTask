@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Watcher
 {
@@ -33,8 +34,8 @@ namespace Watcher
 
         public void Dispose() 
             => _fileSystemWatcher.Dispose();
-
+        
         private void OnChanged(object source, FileSystemEventArgs e) 
-            => NewFile?.Invoke(e.FullPath);
+            => Task.Factory.StartNew(() => NewFile?.Invoke(e.FullPath));
     }
 }
